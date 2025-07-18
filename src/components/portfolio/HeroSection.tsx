@@ -72,8 +72,8 @@ const HeroSection = () => {
 
         {/* Right Content - Profile Image */}
         <div className="flex-1 flex justify-center items-center animate-slide-in-right">
-          <div className="relative">
-            <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-glow border-4 border-white/20 animate-glow-pulse">
+          <div className="relative group">
+            <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-blue-500 via-purple-500 to-blue-500 shadow-glow transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_0_40px_10px_#6366f1,0_0_80px_20px_#a21caf] bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900">
               <img 
                 src={profileImage} 
                 alt="Jenil Vaghasiya"
@@ -81,9 +81,8 @@ const HeroSection = () => {
                 style={{ objectPosition: 'center top' }}
               />
             </div>
-            
-            {/* Decorative ring */}
-            <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-bounce-in" style={{ animationDelay: '0.5s' }} />
+            {/* Decorative neon ring */}
+            <div className="absolute inset-0 rounded-full border-4 border-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-blue-500 via-purple-500 to-blue-500 pointer-events-none animate-pulse" style={{ opacity: 0.7 }} />
           </div>
         </div>
       </div>

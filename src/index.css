@@ -8,72 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    /* Modern professional color scheme */
-    --primary: 240 100% 65%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 245 100% 75%;
-    
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
-
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-
-    --accent: 320 100% 70%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 240 100% 65%;
-
-    /* Custom portfolio colors */
-    --hero-gradient-start: 240 100% 65%;
-    --hero-gradient-end: 320 100% 70%;
-    --section-bg: 240 5% 98%;
-    --glass-bg: 0 0% 100%;
-    --glass-border: 240 6% 90%;
-    
-    /* Shadows and effects */
-    --shadow-elegant: 0 10px 30px -10px hsl(240 100% 65% / 0.3);
-    --shadow-glow: 0 0 40px hsl(245 100% 75% / 0.4);
-    --shadow-card: 0 4px 20px -4px hsl(240 6% 10% / 0.1);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
+    /* Use the dark theme values from the .dark class for a black theme */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -109,7 +44,25 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Modern professional color scheme (keep for accent colors) */
+    --primary-glow: 245 100% 75%;
+    --hero-gradient-start: 240 100% 65%;
+    --hero-gradient-end: 320 100% 70%;
+    --section-bg: 240 5% 18%; /* much darker section background */
+    --glass-bg: 222.2 84% 4.9%;
+    --glass-border: 217.2 32.6% 17.5%;
+    /* Shadows and effects */
+    --shadow-elegant: 0 10px 30px -10px hsl(240 100% 65% / 0.3);
+    --shadow-glow: 0 0 40px hsl(245 100% 75% / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(240 6% 10% / 0.1);
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --radius: 0.5rem;
   }
+
+  /* Remove the .dark class override, since :root is now always dark */
 }
 
 @layer base {
@@ -132,7 +85,8 @@ All colors MUST be HSL.
   
   /* Gradient backgrounds */
   .gradient-hero {
-    background: linear-gradient(135deg, hsl(var(--hero-gradient-start)), hsl(var(--hero-gradient-end)));
+    /* Black to purple gradient background for hero section */
+    background: linear-gradient(135deg, #0a0a0a 0%, #3b0764 100%);
   }
   
   .gradient-section {
