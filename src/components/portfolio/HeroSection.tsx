@@ -1,11 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Download, ArrowDown } from "lucide-react";
+import { Download, ArrowDown, ChevronsDown } from "lucide-react";
 import profileImage from "@/assets/jenil-profile.jpg";
-
 
 const HeroSection = () => {
   const downloadResume = () => {
-    // Download the actual PDF from the public folder
     const link = document.createElement('a');
     link.href = '/Jenil_Vaghasiya (1).pdf';
     link.download = 'Jenil_Vaghasiya_Resume.pdf';
@@ -20,79 +18,125 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen gradient-hero flex items-center justify-center relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-white/10 rounded-full animate-float" />
-        <div className="absolute bottom-20 right-20 w-24 h-24 bg-white/10 rounded-full animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-white/10 rounded-full animate-float" style={{ animationDelay: '2s' }} />
+    <section className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center relative overflow-hidden">
+      {/* Particle background */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: `${Math.random() * 6 + 2}px`,
+              height: `${Math.random() * 6 + 2}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float ${Math.random() * 10 + 10}s linear infinite`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
       </div>
 
-      <div className="container mx-auto px-6 py-20 flex items-center justify-between max-w-7xl relative z-10">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 opacity-5 bg-[size:50px_50px] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)]" />
+
+      <div className="container mx-auto px-6 py-20 flex flex-col lg:flex-row items-center justify-between max-w-7xl relative z-10 gap-12">
         {/* Left Content */}
-        <div className="flex-1 text-white animate-fade-in">
-          <h1 className="text-6xl md:text-7xl font-bold mb-4 leading-tight">
-            Jenil
-            <br />
-            <span className="text-transparent bg-gradient-to-r from-white to-white/80 bg-clip-text">
-              Vaghasiya
+        <div className="text-center lg:text-left animate-fade-in">
+          <div className="mb-6">
+            <span className="text-purple-400 font-mono text-sm md:text-base">
+              Hello, I'm
             </span>
-          </h1>
-          
-          <div className="text-xl md:text-2xl mb-6 font-light">
-            <span className="block">Aspiring Full Stack Developer</span>
-            <span className="text-white/80">MERN | C# | ASP.NET</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-2 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-purple-200">
+              Jenil Vaghasiya
+            </h1>
+            
+            <div className="text-xl md:text-2xl mb-6 font-light">
+              <span className="inline-block bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Full Stack Developer
+              </span>
+            </div>
+
+            <p className="text-lg mb-8 text-white/80 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              Crafting digital experiences with expertise in MERN stack, C#, and ASP.NET.
+              Passionate about building solutions that make an impact.
+            </p>
           </div>
 
-          <p className="text-lg mb-8 text-white/90 max-w-lg leading-relaxed">
-            To obtain a position that will allow me to utilize my technical skills, 
-            knowledge, and willingness to learn in making an organization successful.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Button 
               onClick={downloadResume}
               size="lg"
-              className="glass hover-glow bg-white/20 border-white/30 text-white hover:bg-white/30 transition-smooth"
+              className="group relative overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
+              <span className="relative z-10 flex items-center">
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
             
             <Button 
               onClick={scrollToProjects}
+              variant="outline"
               size="lg"
-              className="glass hover-glow bg-white/20 border-white/30 text-white hover:bg-white/30 transition-smooth"
+              className="group relative overflow-hidden border-white/20 bg-white/5 hover:bg-white/10 text-white backdrop-blur-sm hover:shadow-purple-500/20 hover:shadow-lg transition-all duration-300"
             >
-              View Projects
-              <ArrowDown className="ml-2 h-5 w-5" />
+              <span className="relative z-10 flex items-center">
+                View Projects
+                <ArrowDown className="ml-2 h-5 w-5" />
+              </span>
+              <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
+          </div>
+
+          {/* Tech stack badges */}
+          <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-3">
+            {['MERN', 'C#', 'ASP.NET', 'JavaScript', 'TypeScript', 'React', 'Node.js'].map((tech) => (
+              <span 
+                key={tech}
+                className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-white/80 border border-white/10 backdrop-blur-sm"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
         </div>
 
         {/* Right Content - Profile Image */}
-        <div className="flex-1 flex justify-center items-center animate-slide-in-right">
-          <div className="relative group">
-            <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-blue-500 via-purple-500 to-blue-500 shadow-glow transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_0_40px_10px_#6366f1,0_0_80px_20px_#a21caf] bg-gradient-to-br from-blue-900 via-purple-900 to-blue-900">
+        <div className="relative group animate-slide-in-right">
+          <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-br from-purple-500 via-blue-500 to-purple-500 p-0.5 shadow-2xl">
+            <div className="w-full h-full rounded-full overflow-hidden">
               <img 
                 src={profileImage} 
                 alt="Jenil Vaghasiya"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                 style={{ objectPosition: 'center top' }}
               />
             </div>
-            {/* Decorative neon ring */}
-            <div className="absolute inset-0 rounded-full border-4 border-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-blue-500 via-purple-500 to-blue-500 pointer-events-none animate-pulse" style={{ opacity: 0.7 }} />
           </div>
+          
+          {/* Floating elements */}
+          <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-purple-500/10 blur-xl animate-pulse" />
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-blue-500/10 blur-xl animate-pulse delay-1000" />
+          
+          {/* Glow effect */}
+          <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl scale-110 opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse" />
+      <button 
+        onClick={scrollToProjects}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center group"
+      >
+        <div className="text-white/60 group-hover:text-white/90 text-sm mb-2 transition-colors">
+          Explore more
         </div>
-      </div>
+        <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center items-start p-1 group-hover:border-white/60 transition-colors">
+          <ChevronsDown className="h-5 w-5 text-white/70 animate-bounce" />
+        </div>
+      </button>
     </section>
   );
 };
